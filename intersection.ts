@@ -1,0 +1,4 @@
+
+//type AandB = typeA & typeB
+
+
