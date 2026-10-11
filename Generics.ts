@@ -9,7 +9,15 @@ const number = identify<string> ("Aimable");
 console.log(number);
 
 
-// Generics values and keys
+// Function Generics with multiple parameters 
+
+function combine <T,U> (value1:T,value2:U) {
+    return [value1,value2]
+}
+
+const inform = combine (23,"aimable")
+
+console.log(...inform);
 
 
 
