@@ -11,6 +11,8 @@ console.log(number);
 
 // Function Generics with multiple parameters 
 
+
+
 function combine <T,U> (value1:T,value2:U) {
     return [value1,value2]
 }
@@ -18,6 +20,16 @@ function combine <T,U> (value1:T,value2:U) {
 const inform = combine (23,"aimable")
 
 console.log(...inform);
+
+// This T and U  means that we have difference type to pass in the function  
+
+function adding <T,U>(a:T,b:U) {
+    return a 
+}
+
+let result = adding(2,4)
+console.log(result);
+
 
 
 
