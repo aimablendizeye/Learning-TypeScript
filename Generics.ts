@@ -31,5 +31,17 @@ let result = adding(2,4)
 console.log(result);
 
 
+// Example 3 
+
+const arr = [2,3,5,67,8]
+const str = ["Aimable","Mugabo","Reponse","Manzi"]
+
+function getElem<Type> (arr:Type[]) {
+ return arr[arr.length-1];
+}
+
+console.log(getElem(str));
+
+
 
 
