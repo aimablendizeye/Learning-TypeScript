@@ -1,25 +1,4 @@
 
-/// Challenge 1
-
-type DeepReadonly<T> = {
-  readonly [K in keyof T]: T[K] extends (...args: any[]) => any
-    ? T[K]
-    : T[K] extends object
-      ? DeepReadonly<T[K]>
-      : T[K];
-};
-
-interface Challenge1User {
-  name: string;
-  greet(message: string): void;
-}
-
-const user: DeepReadonly<Challenge1User> = {
-  name: "Alice",
-  greet: (message: string) => console.log(message),
-};
-
-user.greet("Hello");
 
 
 
@@ -85,3 +64,5 @@ function getProperty<T, K extends keyof T>(obj: T, key: K):T[K] {
 
 const person = { name: "Bob", age: 30 };
 const age = getProperty(person, "age");
+
+

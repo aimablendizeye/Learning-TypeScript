@@ -54,3 +54,18 @@ const newConfig = {
 }
 
 // as const makes every property readonly, so the assignment errors. Remove as const or don’t reassign.
+
+
+
+// Challenge 4 
+
+function length(s?: string ): number {
+
+  if (s !== "string")return 0
+
+    return s.length;
+}
+
+
+// s is string | undefined, so s.length errors under strictNullChecks. Use s?.length ?? 0 or check if (!s) return 0.
+
