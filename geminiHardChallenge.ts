@@ -4,9 +4,7 @@
 /// Challenge 1
 
 type DeepReadonly<T> = {
-  readonly [K in keyof T]: T[K] extends (...args: any[]) => any
-    ? T[K]
-    : T[K] extends object
+  readonly [K in keyof T]: T[K] extends (...args: any[]) => any ? T[K] : T[K] extends object
       ? DeepReadonly<T[K]>
       : T[K];
 };
@@ -44,3 +42,15 @@ function processInput(input: string | number | null) {
     console.log(input.toUpperCase());
   }, 1000);
 }
+
+
+// Challenge 3 
+
+
+type Clean<T> = T extends null | undefined ? never : T;
+
+// Intended: string[] | number[]
+// Actual: (string | number)[] or something unexpected depending on distribution.
+type Result = Clean<string[] | null | undefined>;
+
+const val: Result = ["hello"];
