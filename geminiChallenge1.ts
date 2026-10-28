@@ -66,3 +66,11 @@ const person = { name: "Bob", age: 30 };
 const age = getProperty(person, "age");
 
 
+
+// type inference
+
+type ReturnType<T> =  T extends (...args: any[])=> infer R ? R : never;
+
+
+
+
