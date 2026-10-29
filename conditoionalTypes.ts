@@ -44,3 +44,43 @@ type WrapInArray<T> = [T] extends [any] ? T[] : never;
 type Result = WrapInArray<string  | number>;
 
 const items: Result = ["hello", 42]; // Bug: Type error! Why?
+
+
+
+// Challenge 4 
+
+interface Formatter {
+  format(value: string): string;
+  format(value: number): number;
+}
+
+// A utility type to extract the return type
+type GetReturn<T> = T extends (...args: any[]) => infer R ? R : never;
+
+// Bug: What does `FormattedResult` evaluate to, and why doesn't it capture all return types?
+type FormattedResult = GetReturn<Formatter["format"]>;
+
+
+
+// understanding distributed conditional Type 
+
+
+ type stringOrNot<T>  = T extends string ? string : never;
+
+ type Aunion = string | number | never ;
+
+ type resultType = Exclude<'a'|'b'|'c','d'|'e'>
+
+
+
+ type myType <T> = T extends string | number ? T : never;
+
+
+type myResult  = myType <boolean>
+// <string | number | boolean >
+
+
+
+
+
+
