@@ -1,7 +1,14 @@
 
 
+// challenge 1 
 
-//  challenge 1 
+function getProp<T,U extends keyof T>(obj: T, key: U):T[U] {
+
+  return obj[key];
+}
+
+
+//  challenge 2
 
 
 type Shape =
@@ -27,7 +34,7 @@ function area(s: Shape): number {
 
 
 
-// challenge 2 
+// challenge 3
 
 
 interface User { 
@@ -43,7 +50,7 @@ async function fetchUser(id: number): Promise<User> {
 // An async function must return Promise<User>, not User. Also, res.json() returns Promise<any>, so consider as Promise<User> or validating the data.
 
 
-// Challenge 3 
+// Challenge 4
 
 
 const config = { mode: "dark", retries: 3 } as const;
@@ -57,7 +64,7 @@ const newConfig = {
 
 
 
-// Challenge 4 
+// Challenge 5 
 
 function length(s?: string ): number {
 
@@ -69,3 +76,70 @@ function length(s?: string ): number {
 
 // s is string | undefined, so s.length errors under strictNullChecks. Use s?.length ?? 0 or check if (!s) return 0.
 
+
+
+// challenge 6 
+
+type Getters<T> = {
+
+  [K in keyof T as `get${Capitalize<string & K>}`]: () => T[K];
+};
+
+// keyof T can be string | number | symbol, and Capitalize only accepts strings. Use Capitalize<string & K>.
+
+
+// challenge 7 
+
+class Counter {
+  count = 0;
+  inc() { 
+    this.count++;
+   }
+}
+const c = new Counter();
+setTimeout( () => c.inc, 100);
+
+setTimeout (() =>console.log(c.count),100 )
+; // expected 1 after the timeout
+
+
+// challenge 8 
+
+function isString(x: unknown): boolean {
+  return typeof x === "string";
+}
+
+function shout(x: unknown) {
+    if (typeof x == "string") {
+    return x.toUpperCase();
+  }
+}
+  
+
+
+// challenge 9 
+
+interface User { id: number; name: string; email: string }
+
+function update(user: User, changes: Partial<User>): User {
+  return { ...user, ...changes };
+}
+
+update({ id: 1, name: "Bo", email: "b@x.com" }, { name: "Ann" });
+
+//changes: User requires all fields. Use changes: Partial<User>.
+
+
+// challenge 10 
+
+interface Logger {
+  level: number;
+  log(msg: string): void;
+}
+
+class ConsoleLogger implements Logger {
+  level = 29;
+  log(msg: string) { console.log(msg); }
+}
+
+// ConsoleLogger is missing the level property. Add level = 0; (or whatever number fits).
