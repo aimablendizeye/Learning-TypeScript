@@ -68,3 +68,14 @@ const person = { name: "Bob", age: 30 };
 const age = getProperty(person, "age");
 
 
+
+
+// challenges on Conditional types 
+
+// challenge 1
+
+type IsString<T> = [T] extends [never] ? "No" : [T] extends [string]? "Yes" : "No";
+
+// Intended: "No" (since never is not a string)
+// Actual: never
+type TestNever = IsString<never>;

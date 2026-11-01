@@ -12,6 +12,9 @@ type TestNever = IsString<never>;
 // Find the Bug: Why does IsString<never> evaluate to never instead of "No"? How do conditional types behave with never, and how can you prevent this behavior if you want to check never literally?
 
 
+// Why?
+//Conditional types distribute when the checked type is a naked type parameter:
+
 
 
 // Challenge 2 
