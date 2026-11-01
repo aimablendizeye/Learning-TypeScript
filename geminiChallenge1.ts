@@ -3,7 +3,7 @@
 
 
 
-// Challenge 2
+// Challenge 1
 
 
 function getProp<T, K extends keyof T>(obj: T, key: K): T[K] {
@@ -12,7 +12,7 @@ function getProp<T, K extends keyof T>(obj: T, key: K): T[K] {
 
 
 
-// challenge 3
+// challenge 2
 
 function printUppercase(value: string | null) {
   if (typeof value === "string") {
@@ -25,7 +25,7 @@ printUppercase(null);
 
 
 
-// Challenge 4 
+// Challenge 3
 
 
 interface User {
@@ -39,7 +39,7 @@ function getUserProperty<K extends keyof User>(user: User, key: K): User[K] {
 }
 
 
-// Challenge 6
+// Challenge 4
 
 
 function appendZero(nums: readonly number[]): number[] {
@@ -54,7 +54,7 @@ console.log(updatedScores);
 
 
 
-// Challenge 7 
+// Challenge 5 
 
 function getProperty<T, K extends keyof T>(obj: T, key: K):T[K] {
   // Bug: TypeScript throws an error: 
@@ -67,9 +67,7 @@ const age = getProperty(person, "age");
 
 
 
-// type inference
 
-type ReturnType<T> =  T extends (...args: any[])=> infer R ? R : never;
 
 
 
