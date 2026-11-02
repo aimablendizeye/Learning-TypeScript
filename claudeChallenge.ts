@@ -143,3 +143,63 @@ class ConsoleLogger implements Logger {
 }
 
 // ConsoleLogger is missing the level property. Add level = 0; (or whatever number fits).
+
+
+
+// Hard Questions 
+
+
+// challenge 1 
+
+// type Events = { 
+//   login: { user: string }; 
+//   logout: undefined };
+
+// class Emitter<E> {
+//   private handlers: { 
+//     [K in keyof E]?: ((p: E[K]) => void)[] } = {};
+
+//   on<K extends keyof E>(event: K, fn: (p: E[K]) => void) {
+//     (this.handlers[event] ??= []).push(fn);
+//   }
+
+//   emit<K extends keyof E>(event: K, payload: E[K]): {
+//     this.handlers[event]?.forEach(fn => fn(payload));
+//   }
+// }
+
+
+
+// challenge 2 
+
+// To avoid distribution we wrap the T and never with square bracket 
+
+type IsNever<T> = [T] extends [never] ? true : false;
+type R = IsNever<never>; // expected: true
+
+
+
+// challenge 3 
+
+type Action =
+  | { type: "add"; item: string }
+  | { type: "remove"; index: number }
+  | { type: "clear" };
+
+function reducer(state: string[], action: Action): string[] {
+  switch (action.type) {
+    case "add":
+      state.push(action.item);
+      return state;
+    case "remove":
+      return state.filter((_, i) => i !== action.index);
+
+    case "clear":
+      return state;
+    // default:
+    //   return state;   
+        
+  }
+}
+
+
